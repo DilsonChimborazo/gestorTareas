@@ -11,16 +11,34 @@
 
 </head>
 <body>
-    <ul class="my-5">
-        {% for tarea in tareas %}
-        <div class="border border-3">
-            <h5>{{tarea.titulo}}</h5>
-            <p>{{tarea.descripcion}}</p>
-            <p>{{tarea.estado}}</p>
-        </div> 
-        {% endfor %}
-        <a href="crear">Crear tarea</a>
-    </ul>  
-    
+    <nav class="m-5">
+        <a href="crear"><button class="btn btn-success">Agregar</button></a>
+        <a href=""><button class="btn btn-danger">Eliminar</button></a>
+    </nav>
+    <div class="container my-5">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Título</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tarea in tareas %}
+                <tr>
+                    <td>{{ tarea.titulo }}</td>
+                    <td>{{ tarea.descripcion }}</td>
+                    {% if tarea.estado == 'incompleto' %}
+                    <td class="text-danger">Incompleta</td>
+                    {% endif %}
+                    {% if tarea.estado == 'terminado' %}
+                    <td class="text-success">Terminada</td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
