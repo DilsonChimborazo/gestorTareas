@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tareas</title>
+</head>
+<body>
+    <h1>Lista de tareas</h1>
+    <div>
+        <!-- Botones para filtrar tareas -->
+        <a href="{% url 'tarea_Completa' %}"><button>Tareas completas</button></a>
+        <a href="{% url 'tarea_Incompleta' %}"><button>Tareas incomletas</button></a>
+    </div>
+    <ul>
+        <!-- Listado de tareas -->
+        {% for task in tasks %}
+            <li>{{ Tarea.name }} - {% if task.completed %}Completed{% else %}Incomplete{% endif %}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

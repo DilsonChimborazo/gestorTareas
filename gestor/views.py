@@ -16,3 +16,11 @@ def crear(request):
 def listar(request):
     tareas = Tarea.objects.all()
     return render(request,'listar.html',{'tareas':tareas})
+
+def tarea_Completa(request):
+    tareas = Tarea.objects.filter(completed=True)  # Filtra solo las tareas completadas
+    return render(request, 'tareas.html', {'tareas': tareas})
+
+def tarea_Incompleta(request):
+    tareas = Tarea.objects.filter(completed=False)  # Filtra solo las tareas incompletas
+    return render(request, 'tareas.html', {'tareas': tareas})
